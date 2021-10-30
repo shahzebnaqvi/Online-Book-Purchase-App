@@ -28,26 +28,82 @@ class Singleproduct extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [productdet(context), productdetails()],
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [productdet(context), productdetails()],
+          ),
         ));
   }
+}
+
+Widget productdetails() {
+  return Container(
+    padding: EdgeInsets.all(20),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Description",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        Text(
+          "Dean on Branding presents in a compact from the twenty essential principles of branding that will lead to the creation og strong brand",
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[900],
+                ),
+                onPressed: () {},
+                icon: Icon(Icons.menu_book),
+                label: Text("Preview")),
+            ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[900],
+                ),
+                onPressed: () {},
+                icon: Icon(Icons.reviews),
+                label: Text("Reviews"))
+          ],
+        ),
+        ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(double.infinity, 40),
+              primary: Colors.blue[
+                  900], // double.infinity is the width and 30 is the height
+            ),
+            onPressed: () {},
+            child: Text("Buy Now For \$29.67")),
+      ],
+    ),
+  );
 }
 
 Widget productdet(context) {
   return Container(
     color: Colors.brown[100],
-    height: MediaQuery.of(context).size.height * 0.5,
+    height: MediaQuery.of(context).size.height * 0.55,
     child: Column(
       children: [
         Container(
-          width: 150,
+          width: 140,
           color: Colors.red,
           child: Image.asset('assets/images/image5.jpg', fit: BoxFit.fill),
         ),
-        Text("dj"),
-        Text("data"),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Text(
+            "Brand Strategy",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Text("Dean Warner"),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -72,19 +128,13 @@ Widget productdet(context) {
               color: Colors.indigo[900],
             ),
             Text("4.5"),
-            Text("/5.0")
+            Text(
+              "/5.0",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
           ],
         )
       ],
-    ),
-  );
-}
-
-Widget productdetails() {
-  return Container(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [Text("data")],
     ),
   );
 }
