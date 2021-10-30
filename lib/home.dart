@@ -7,11 +7,13 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * 0.15,
+        elevation: 0,
+        toolbarHeight: MediaQuery.of(context).size.height * 0.09,
         backgroundColor: Colors.white,
         leading: Icon(
-          Icons.menu_rounded,
+          Icons.sort_rounded,
           color: Colors.black,
         ),
         actions: [
@@ -37,10 +39,14 @@ class Home extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    productcon(context),
-                    productcon(context),
-                    productcon(context),
-                    productcon(context),
+                    productcon(context, "assets/images/image1.jpg",
+                        "Creative Hustle", "Ramen Albert"),
+                    productcon(context, "assets/images/image2.jpg",
+                        "Art Unleased", "Stefeno Milk"),
+                    productcon(context, "assets/images/image3.jpg",
+                        "Creative Hustle", "Creative Hustle"),
+                    productcon(context, "assets/images/image4.jpg",
+                        "The Study of Brain", "Creative Hustle"),
                   ],
                 ),
               ),
@@ -49,10 +55,18 @@ class Home extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    productcon(context),
-                    productcon(context),
-                    productcon(context),
-                    productcon(context),
+                    productcon(context, "assets/images/image3.jpg",
+                        "The Study of Brain", "Creative Hustle"),
+                    productcon(context, "assets/images/image4.jpg",
+                        "Creative Hustle", "Creative Hustle"),
+                    productcon(context, "assets/images/image1.jpg",
+                        "Creative Hustle", "Creative Hustle"),
+                    productcon(context, "assets/images/image1.jpg",
+                        "Creative Hustle", "Creative Hustle"),
+                    productcon(context, "assets/images/image1.jpg",
+                        "Creative Hustle", "Creative Hustle"),
+                    productcon(context, "assets/images/image1.jpg",
+                        "Creative Hustle", "Creative Hustle"),
                   ],
                 ),
               ),
@@ -70,6 +84,31 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.storefront_rounded),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bookmark_border),
+            label: 'Shop',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: 'Setting',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings_input_component_rounded),
+            label: 'About',
+          ),
+        ],
+        backgroundColor: Colors.white,
+        fixedColor: Colors.blue[900],
       ),
     );
   }
@@ -92,7 +131,7 @@ Widget heading3(String head1) {
   );
 }
 
-Widget productcon(context) {
+Widget productcon(context, String img, text1, text2) {
   return Container(
     margin: EdgeInsets.only(
       top: MediaQuery.of(context).size.height * 0.02,
@@ -110,8 +149,8 @@ Widget productcon(context) {
           height: MediaQuery.of(context).size.height * 0.3,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(
-                "https://previews.123rf.com/images/evgenyi/evgenyi1701/evgenyi170100040/73391527-stack-of-different-books-isolated-on-white-background-vertical-photo-.jpg",
+              image: AssetImage(
+                img,
               ),
               fit: BoxFit.fill,
             ),
@@ -121,11 +160,11 @@ Widget productcon(context) {
           ),
         ),
         Text(
-          "Creative Hustle",
+          text1,
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         ),
         Text(
-          "Ramen Albert",
+          text2,
           style: TextStyle(
               fontSize: 12, fontWeight: FontWeight.w200, color: Colors.black),
         ),

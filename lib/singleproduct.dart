@@ -6,27 +6,47 @@ class Singleproduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [productdet(context), productdetails()],
-      ),
-    );
+        appBar: AppBar(
+          elevation: 0,
+          // toolbarHeight: MediaQuery.of(context).size.height * 0.09,
+          backgroundColor: Colors.brown[100],
+          leading: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+          actions: [
+            Icon(
+              Icons.bookmark_border,
+              color: Colors.black,
+            ),
+            Icon(
+              Icons.more_vert_rounded,
+              color: Colors.black,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+          ],
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [productdet(context), productdetails()],
+        ));
   }
 }
 
 Widget productdet(context) {
   return Container(
     color: Colors.brown[100],
-    height: MediaQuery.of(context).size.height * 0.6,
-    width: MediaQuery.of(context).size.width,
+    height: MediaQuery.of(context).size.height * 0.5,
     child: Column(
       children: [
-        Image.network(
-          "https://pngimg.com/uploads/book/book_PNG2105.png",
-          width: 400,
-          height: 100,
+        Container(
+          width: 150,
+          color: Colors.red,
+          child: Image.asset('assets/images/image5.jpg', fit: BoxFit.fill),
         ),
-        Text("data"),
+        Text("dj"),
         Text("data"),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
